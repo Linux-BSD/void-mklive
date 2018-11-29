@@ -143,7 +143,7 @@ fi
 
 # Be absolutely certain the platform is supported before continuing
 case "$PLATFORM" in
-    bananapi|beaglebone|cubieboard2|cubietruck|odroid-c2|odroid-u2|rpi|rpi2|rpi3|usbarmory|GCP|pinebookpro|*-musl);;
+    bananapi|beaglebone|cubieboard2|cubietruck|odroid-c2|odroid-u2|rpi|rpi2|rpi3|usbarmory|GCP|pinebookpro|pine64*|*-musl);;
     *) die "The $PLATFORM is not supported, exiting..."
 esac
 
@@ -177,7 +177,7 @@ case "$PLATFORM" in
 esac
 
 case "$PLATFORM" in
-    cubieboard2|cubietruck|ci20*|odroid-c2*)
+    cubieboard2|cubietruck|ci20*|odroid-c2*|pine64*)
         # These platforms use a single partition for the entire filesystem.
         sfdisk "${FILENAME}" <<_EOF
 label: dos

@@ -5,10 +5,10 @@ SCRIPTS += $(SHIN:.sh.in=.sh)
 DATECODE=$(shell date "+%Y%m%d")
 SHELL=/bin/bash
 
-T_PLATFORMS=rpi{,2,3}{,-musl} beaglebone{,-musl} cubieboard2{,-musl} odroid-c2{,-musl} usbarmory{,-musl} GCP{,-musl}
+T_PLATFORMS=rpi{,2,3}{,-musl} beaglebone{,-musl} cubieboard2{,-musl} odroid-c2{,-musl} usbarmory{,-musl} GCP{,-musl} pine64{,-musl}
 T_ARCHS=i686 x86_64{,-musl} armv{6,7}l{,-musl} aarch64{,-musl}
 
-T_SBC_IMGS=rpi{,2,3}{,-musl} beaglebone{,-musl} cubieboard2{,-musl} odroid-c2{,-musl} usbarmory{,-musl}
+T_SBC_IMGS=rpi{,2,3}{,-musl} beaglebone{,-musl} cubieboard2{,-musl} odroid-c2{,-musl} usbarmory{,-musl},pine64-A64{,-musl}
 T_CLOUD_IMGS=GCP{,-musl}
 
 T_PXE_ARCHS=x86_64{,-musl}
@@ -24,7 +24,7 @@ MASTERDIRS=$(shell echo $(T_MASTERDIRS))
 
 ALL_ROOTFS=$(foreach arch,$(ARCHS),void-$(arch)-ROOTFS-$(DATECODE).tar.xz)
 ALL_PLATFORMFS=$(foreach platform,$(PLATFORMS),void-$(platform)-PLATFORMFS-$(DATECODE).tar.xz)
-ALL_SBC_IMAGES=$(foreach platform,$(SBC_IMGS),void-$(platform)-$(DATECODE).img.xz)
+ALL_SBC_IMAGES=$(foreach sbc,$(SBC_IMGS),void-$(sbc)-$(DATECODE).img.xz)
 ALL_CLOUD_IMAGES=$(foreach cloud,$(CLOUD_IMGS),void-$(cloud)-$(DATECODE).tar.gz)
 ALL_PXE_ARCHS=$(foreach arch,$(PXE_ARCHS),void-$(arch)-NETBOOT-$(DATECODE).tar.gz)
 ALL_MASTERDIRS=$(foreach arch,$(MASTERDIRS), masterdir-$(arch))
